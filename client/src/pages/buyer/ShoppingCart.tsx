@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
-import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Package } from "lucide-react";
+import { Trash2, Plus, Minus, ShoppingCart as ShoppingCartIcon, ArrowRight, Package } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 
@@ -54,7 +54,7 @@ export default function ShoppingCart() {
       <main className="container mx-auto px-4 py-8">
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 gap-4">
-            <ShoppingCart className="w-20 h-20 text-slate-300" />
+            <ShoppingCartIcon className="w-20 h-20 text-slate-300" />
             <h2 className="text-xl font-semibold text-slate-600">Your cart is empty</h2>
             <p className="text-slate-400">Browse products and add items to your cart</p>
             <Button onClick={() => navigate("/products")} className="gap-2">

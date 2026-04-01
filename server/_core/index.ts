@@ -1,4 +1,6 @@
-import "dotenv/config";
+import path from "path";
+import { fileURLToPath } from "url";
+import { config as loadEnv } from "dotenv";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
@@ -8,6 +10,10 @@ import { createContext } from "./context";
 import { connectDB } from "../mongodb";
 import { authRateLimiter, apiRateLimiter } from "./rateLimit";
 import { serveStatic, setupVite } from "./vite";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+loadEnv({ path: path.resolve(__dirname, "../..", ".env") });
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
